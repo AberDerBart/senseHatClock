@@ -1,4 +1,6 @@
 from sense_emu import SenseHat
+import Clock
+import Temp
 
 sense=SenseHat()
 
@@ -19,6 +21,9 @@ directionMap={
 	'middle':None
 }
 
+clock=Clock.Clock(sense)
+temp=Temp.Temp(sense)
+
 while(run):
 	event=sense.stick.wait_for_event()
 	
@@ -28,6 +33,8 @@ while(run):
 
 	if(selection):
 		sense.set_pixels(selection)
+	else:
+		temp.update()
 
 
 
