@@ -69,7 +69,7 @@ braille={
      [1,1]]
 }
 
-def printB(sense,x,y,text,fg=[255,0,0],bg=[0,255,0],space=1):
+def printB(sense,x,y,text,fg=[255,255,255],bg=[0,0,0],space=1):
 	for index,letter in enumerate(text):
 		offLetter=index * (space +2)
 		for offY, line in enumerate(braille[letter]):
