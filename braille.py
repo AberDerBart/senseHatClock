@@ -2,45 +2,78 @@ from sense_emu import SenseHat
 
 sense=SenseHat()
 
-braille={"a":[[1,0],
+braille={"1":[[1,0],
               [0,0],
 	      [0,0]],
-"b":[[1,0],
+"2":[[1,0],
      [1,0],
      [0,0]],
-"c":[[1,1],
+"3":[[1,1],
      [0,0],
      [0,0]],
-"d":[[1,1],
+"4":[[1,1],
      [1,0],
      [0,0]],
-"e":[[1,0],
+"5":[[1,0],
      [0,1],
      [0,0]],
-"f":[[1,0],
+"6":[[1,1],
+     [1,0],
+     [0,0]],
+"7":[[1,1],
+     [1,1],
+     [0,0]],
+"8":[[1,0],
+     [1,1],
+     [0,0]],
+"9":[[0,1],
+     [1,0],
+     [0,0]],
+"0":[[0,1],
+     [1,1],
+     [0,0]],
+"A":[[1,0],
      [0,0],
      [0,0]],
-"g":[[1,0],
+"B":[[1,0],
+     [1,0],
+     [0,0]],
+"C":[[1,1],
      [0,0],
      [0,0]],
-"h":[[1,0],
-     [0,0],
+"D":[[1,1],
+     [1,0],
      [0,0]],
-"i":[[1,0],
-     [0,0],
+"E":[[1,0],
+     [0,1],
      [0,0]],
-"j":[[1,0],
-     [0,0],
-     [0,0]]
+"F":[[1,1],
+     [1,0],
+     [0,0]],
+"G":[[1,1],
+     [1,1],
+     [0,0]],
+"H":[[1,0],
+     [1,1],
+     [0,0]],
+"I":[[0,1],
+     [1,0],
+     [0,0]],
+"J":[[0,1],
+     [1,1],
+     [0,0]],
+"%":[[1,1],
+     [1,1],
+     [1,1]]
 }
 
-def printB(sense,x,y,text,fg=[255,0,0],bg=[0,0,0]):
-	for offY, line in enumerate(braille[text]):
-		for offX,draw in enumerate(line):
-			if(draw):
-				sense.set_pixel(x+offX,y+offY,fg)
-				print("("+str(x+offX)+","+str(y+offY)+")")
-			else:
-				sense.set_pixel(x+offX,y+offY,bg)
-				print("n("+str(x+offX)+","+str(y+offY)+")")
+def printB(sense,x,y,text,fg=[255,0,0],bg=[0,255,0],space=1):
+	for index,letter in enumerate(text):
+		offLetter=index * (space +2)
+		for offY, line in enumerate(braille[letter]):
+			for offX,draw in enumerate(line):
+				if(draw):
+					sense.set_pixel(x+offX+offLetter,y+offY,fg)
+				else:
+					sense.set_pixel(x+offX+offLetter,y+offY,bg)
 
