@@ -12,7 +12,9 @@ class Clock:
 		self.sense.clear()
 		braille.printB(self.sense,0,0,hourString)
 		braille.printB(self.sense,3,4,minString)
-	def up(self):
+	def open(self):
+		pass
+	def close(self):
 		pass
 	def down(self):
 		pass

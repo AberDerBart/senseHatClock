@@ -16,14 +16,18 @@ class Temp:
 
 		tempStr=str(temp).rjust(2)+"C"
 		humidStr=str(humid).rjust(2)+"%"
-		print(tempStr)
-		print(humidStr)
+
+		tempColor=(255,0,0)
+		if(negativeTemp):
+			tempColor=(0,0,255)
 
 		self.sense.clear()
-		braille.printB(self.sense,0,0,tempStr)
+		braille.printB(self.sense,0,0,tempStr,fg=tempColor)
 		braille.printB(self.sense,0,4,humidStr)
-
-
+	def open(self):
+		pass
+	def close(self):
+		pass
 	def up(self):
 		pass
 	def down(self):
