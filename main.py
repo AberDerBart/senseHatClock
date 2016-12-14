@@ -1,6 +1,8 @@
 from sense_emu import SenseHat
 import Clock
 import Temp
+import Player
+import time
 
 sense=SenseHat()
 
@@ -13,28 +15,31 @@ volImage=sense.load_image("vol.png")
 
 selection=None
 
-directionMap={
-	'right':sleepImage,
-	'left':alarmImage,
-	'up':ctlImage,
-	'down':volImage,
-	'middle':None
-}
-
 clock=Clock.Clock(sense)
 temp=Temp.Temp(sense)
+player=Player.Player(sense)
+
+selection=player
+
+def down(event):
+	selection.down(event)
+def left(event):
+	selection.left(event)
+def right(event):
+	selection.right(event)
+def center(event):
+	selection.center(event)
+
+player.open()
+sense.stick.direction_left=left
+sense.stick.direction_right=right
+sense.stick.direction_down=down
+sense.stick.direction_center=center
+
 
 while(run):
-	event=sense.stick.wait_for_event()
-	
-	# update the selected menu
-	if(event.action=='pressed'):
-		selection=directionMap[event.direction]
-
-	if(selection):
-		sense.set_pixels(selection)
-	else:
-		temp.update()
+	time.sleep(10)
+	selection.update()
 
 
 
