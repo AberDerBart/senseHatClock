@@ -33,10 +33,14 @@ def up(event):
 # define update
 def update():
 	selection.update()
-
-# set keybinding
-sense.stick.direction_left=left
-sense.stick.direction_right=right
-sense.stick.direction_down=down
-sense.stick.direction_middle=middle
-sense.stick.direction_up=up
+	for event in sense.stick.get_events():
+		if(event.direction=="left"):
+			selection.left(event)
+		if(event.direction=="right"):
+			selection.right(event)
+		if(event.direction=="up"):
+			selection.up(event)
+		if(event.direction=="down"):
+			selection.down(event)
+		if(event.direction=="middle"):
+			selection.middle(event)
