@@ -18,6 +18,9 @@ def setApp(app):
 		selection=appDict[app]
 		selection.open()
 
+def resetApp():
+	setApp("idle")
+
 # define keybindings
 def down(event):
 	selection.down(event)
