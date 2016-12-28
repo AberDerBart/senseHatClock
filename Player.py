@@ -2,42 +2,44 @@ import mpd
 import Ui
 
 class Player:
+	client=mpd.MPDClient()
 	def __init__(self):
-		self.client=mpd.MPDClient()
 		self.stateImgs={}
 		self.stateImgs["play"]=Ui.sense.load_image("img/player/play.png")
 		self.stateImgs["pause"]=Ui.sense.load_image("img/player/pause.png")
 		self.stateImgs["stop"]=Ui.sense.load_image("img/player/stop.png")
 		self.state=None
 	def open(self):
-		self.client.connect("localhost",6600)
+		Player.client.connect("localhost",6600)
 	def close(self):
-		self.client.disconnect()
+		Player.client.disconnect()
 	def update(self):
-		if("state" in self.client.status()):
-			self.state=self.client.status()["state"]
+		if("state" in Player.client.status()):
+			self.state=Player.client.status()["state"]
 		else:
 			self.state=None
 
 		if self.state in self.stateImgs:
 			Ui.sense.set_pixels(self.stateImgs[self.state])
 	def down(self,event):
+		if(event.action=="pressed"):
+			Ui.setApp("playerAdv")
 		pass
 	def left(self,event):
 		if(event.action=='pressed'):
 			if(self.state=="pause"):
-				self.client.stop()
+				Player.client.stop()
 			else:
-				self.client.previous()
+				Player.client.previous()
 	def right(self,event):
 		if(event.action=='pressed'):
-			self.client.next()
+			Player.client.next()
 	def middle(self,event):
 		if(event.action=='pressed'):
 			if(self.state=="pause" or self.state=="stop"):
-				self.client.play()
+				Player.client.play()
 			elif(self.state=="play"):
-				self.client.pause()
+				Player.client.pause()
 	def up(self,event):
 		if(event.action=="pressed"):
 			Ui.setApp("idle")
