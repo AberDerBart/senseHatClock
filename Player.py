@@ -12,7 +12,7 @@ class Player:
 	def open(self):
 		self.client.connect("localhost",6600)
 	def close(self):
-		self.client.close()
+		self.client.disconnect()
 	def update(self):
 		if("state" in self.client.status()):
 			self.state=self.client.status()["state"]
