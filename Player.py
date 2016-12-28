@@ -5,9 +5,9 @@ class Player:
 	def __init__(self):
 		self.client=mpd.MPDClient()
 		self.stateImgs={}
-		self.stateImgs["play"]=Ui.sense.load_image("playerPlay.png")
-		self.stateImgs["pause"]=Ui.sense.load_image("playerPause.png")
-		self.stateImgs["stop"]=Ui.sense.load_image("playerStop.png")
+		self.stateImgs["play"]=Ui.sense.load_image("img/player/play.png")
+		self.stateImgs["pause"]=Ui.sense.load_image("img/player/pause.png")
+		self.stateImgs["stop"]=Ui.sense.load_image("img/player/stop.png")
 		self.state=None
 	def open(self):
 		self.client.connect("localhost",6600)
