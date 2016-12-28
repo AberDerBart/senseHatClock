@@ -22,6 +22,8 @@ class Idle:
 	def middle(self,event):
 		pass
 	def up(self,event):
+		if(event.action=="pressed"):
+			Ui.setApp("clock")
 		pass
 
 Ui.registerApp("idle",Idle())

@@ -1,12 +1,12 @@
-
+#!/usr/bin/python
 
 import Ui
 import Clock
 import Temp
 import Player
 import Idle
-import time
 
+import time
 
 Ui.setApp("idle")
 run=True
