@@ -1,6 +1,4 @@
-from sense_emu import SenseHat
-
-sense=SenseHat()
+#!/usr/bin/python
 
 braille={
 " ":[],
