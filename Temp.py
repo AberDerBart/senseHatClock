@@ -36,5 +36,5 @@ class Temp:
 		pass
 	def right(self):
 		pass
-	def center(self):
+	def middle(self):
 		pass

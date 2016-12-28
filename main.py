@@ -20,6 +20,7 @@ temp=Temp.Temp(sense)
 player=Player.Player(sense)
 
 selection=player
+selection=clock
 
 def down(event):
 	selection.down(event)
@@ -27,18 +28,18 @@ def left(event):
 	selection.left(event)
 def right(event):
 	selection.right(event)
-def center(event):
-	selection.center(event)
+def middle(event):
+	selection.middle(event)
 
-player.open()
+selection.open()
 sense.stick.direction_left=left
 sense.stick.direction_right=right
 sense.stick.direction_down=down
-sense.stick.direction_center=center
+sense.stick.direction_middle=middle
 
 
 while(run):
-	time.sleep(10)
+	time.sleep(.1)
 	selection.update()
 
 
