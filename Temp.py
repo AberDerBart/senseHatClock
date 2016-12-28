@@ -1,12 +1,13 @@
 #!/usr/bin/python
+import Ui
 import braille
 
 class Temp:
-	def __init__(self,sense):
-		self.sense=sense
+	def __init__(self):
+		pass
 	def update(self):
-		temp=int(self.sense.get_temperature())
-		humid=int(self.sense.get_humidity())
+		temp=int(Ui.sense.get_temperature())
+		humid=int(Ui.sense.get_humidity())
 
 		negativeTemp=(temp < 0)
 		temp=abs(temp)
@@ -21,20 +22,27 @@ class Temp:
 		if(negativeTemp):
 			tempColor=(0,0,255)
 
-		self.sense.clear()
-		braille.printB(self.sense,0,0,tempStr,fg=tempColor)
-		braille.printB(self.sense,0,4,humidStr)
+		Ui.sense.clear()
+		braille.printB(Ui.sense,0,0,tempStr,fg=tempColor)
+		braille.printB(Ui.sense,0,4,humidStr)
 	def open(self):
 		pass
 	def close(self):
 		pass
-	def up(self):
-		pass
-	def down(self):
-		pass
-	def left(self):
-		pass
-	def right(self):
-		pass
-	def middle(self):
-		pass
+	def up(self,event):
+		if(event.action=="pressed"):
+			Ui.resetApp()
+	def down(self,event):
+		if(event.action=="pressed"):
+			Ui.resetApp()
+	def left(self,event):
+		if(event.action=="pressed"):
+			Ui.resetApp()
+	def right(self,event):
+		if(event.action=="pressed"):
+			Ui.resetApp()
+	def middle(self,event):
+		if(event.action=="pressed"):
+			Ui.resetApp()
+
+Ui.registerApp("temp",Temp())

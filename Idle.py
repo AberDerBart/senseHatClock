@@ -16,7 +16,8 @@ class Idle:
 		if(event.action=="pressed"):
 			Ui.setApp("player")
 	def left(self,event):
-		pass
+		if(event.action=="pressed"):
+			Ui.setApp("temp")
 	def right(self,event):
 		pass
 	def middle(self,event):
