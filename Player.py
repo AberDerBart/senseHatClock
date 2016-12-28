@@ -1,13 +1,13 @@
 import mpd
+import Ui
 
 class Player:
-	def __init__(self,sense):
-		self.sense=sense
+	def __init__(self):
 		self.client=mpd.MPDClient()
 		self.stateImgs={}
-		self.stateImgs["play"]=sense.load_image("playerPlay.png")
-		self.stateImgs["pause"]=sense.load_image("playerPause.png")
-		self.stateImgs["stop"]=sense.load_image("playerStop.png")
+		self.stateImgs["play"]=Ui.sense.load_image("playerPlay.png")
+		self.stateImgs["pause"]=Ui.sense.load_image("playerPause.png")
+		self.stateImgs["stop"]=Ui.sense.load_image("playerStop.png")
 		self.state=None
 	def open(self):
 		self.client.connect("localhost",6600)
@@ -20,7 +20,7 @@ class Player:
 			self.state=None
 
 		if self.state in self.stateImgs:
-			self.sense.set_pixels(self.stateImgs[self.state])
+			Ui.sense.set_pixels(self.stateImgs[self.state])
 	def down(self,event):
 		pass
 	def left(self,event):
@@ -38,3 +38,5 @@ class Player:
 				self.client.play()
 			elif(self.state=="play"):
 				self.client.pause()
+
+Ui.registerApp("player",Player())
