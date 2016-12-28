@@ -27,6 +27,8 @@ def right(event):
 	selection.right(event)
 def middle(event):
 	selection.middle(event)
+def up(event):
+	selection.up(event)
 
 # define update
 def update():
@@ -37,3 +39,4 @@ sense.stick.direction_left=left
 sense.stick.direction_right=right
 sense.stick.direction_down=down
 sense.stick.direction_middle=middle
+sense.stick.direction_up=up

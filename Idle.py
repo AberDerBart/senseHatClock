@@ -12,13 +12,16 @@ class Idle:
 		pass
 	def close(self):
 		pass
-	def down(self):
+	def down(self,event):
+		if(event.action=="pressed"):
+			Ui.setApp("player")
+	def left(self,event):
 		pass
-	def left(self):
+	def right(self,event):
 		pass
-	def right(self):
+	def middle(self,event):
 		pass
-	def middle(self):
+	def up(self,event):
 		pass
 
 Ui.registerApp("idle",Idle())

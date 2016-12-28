@@ -38,5 +38,8 @@ class Player:
 				self.client.play()
 			elif(self.state=="play"):
 				self.client.pause()
+	def up(self,event):
+		if(event.action=="pressed"):
+			Ui.setApp("idle")
 
 Ui.registerApp("player",Player())
