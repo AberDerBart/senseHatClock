@@ -43,5 +43,10 @@ class Player:
 	def up(self,event):
 		if(event.action=="pressed"):
 			Ui.setApp("idle")
-
-Ui.registerApp("player",Player())
+5
+try:
+	Player.client.connect("localhost",6600)
+	Player.client.disconnect()
+	Ui.registerApp("player",Player())
+except ConnectionRefusedError:
+	print("Could not reach mpd")
