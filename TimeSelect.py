@@ -25,19 +25,15 @@ class TimeSelect:
 	def close(self):
 		pass
 	def update(self):
-		blink=(time.time()%1 >= .5)
 		hourString=str(self.hour).rjust(2,'0')
 		minString=str(self.minute).rjust(2,'0')
 
-		if(blink):
-			braille.printB(3,0,hourString)
-			braille.printB(3,4,minString)
-		elif(self.selection==0):
-			braille.printB(3,0,"  ")
+		if(self.selection==0):
+			braille.printB(3,0,hourString,fg=(0,255,0))
 			braille.printB(3,4,minString)
 		elif(self.selection==1):
 			braille.printB(3,0,hourString)
-			braille.printB(3,4,"  ")
+			braille.printB(3,4,minString,fg=(0,255,0))
 	def down(self,event):
 		if(event.action=="pressed"):
 			if(self.selection==0):
