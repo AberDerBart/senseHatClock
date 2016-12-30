@@ -4,13 +4,28 @@ appDict={}
 
 sense=SenseHat()
 
+selection=None
+alpha=1
+
+
+def pixelAlpha(pixel,alpha):
+	return (int(pixel[0]*alpha),int(pixel[1]*alpha),int(pixel[2]*alpha))
+
+def imageAlpha(image,alpha):
+	alphaImage=[]
+
+	for pixel in image:
+		alphaImage.append(pixelAlpha(pixel,alpha))
+	
+	return alphaImage
+
 def drawImage(image):
-	sense.set_pixels(image)
+	sense.set_pixels(imageAlpha(image,alpha))
 
 def drawPixel(x,y,pixel):
-	sense.set_pixel(x,y,pixel)
+	global alpha
+	sense.set_pixel(x,y,pixelAlpha(pixel,alpha))
 
-selection=None
 
 def registerApp(appString,app):
 	appDict[appString]=app
