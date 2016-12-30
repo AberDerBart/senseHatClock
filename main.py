@@ -5,6 +5,7 @@ import Clock
 import Temp
 import Player
 import Menu
+import PlayerAdvanced
 
 import time
 

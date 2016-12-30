@@ -49,4 +49,4 @@ try:
 	Player.client.disconnect()
 	Ui.registerApp("player",Player())
 except ConnectionRefusedError:
-	print("Could not reach mpd")
+	print("mpd not available")
