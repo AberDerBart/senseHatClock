@@ -1,4 +1,5 @@
 #!/usr/bin/python
+import Ui
 
 braille={
 " ":[[0,0],
@@ -126,13 +127,13 @@ braille={
      [0,1]]
 }
 
-def printB(sense,x,y,text,fg=[255,255,255],bg=[0,0,0],space=1):
+def printB(x,y,text,fg=[255,255,255],bg=[0,0,0],space=1):
 	for index,letter in enumerate(text):
 		offLetter=index * (space +2)
 		for offY, line in enumerate(braille[letter]):
 			for offX,draw in enumerate(line):
 				if(draw):
-					sense.set_pixel(x+offX+offLetter,y+offY,fg)
+					Ui.drawPixel(x+offX+offLetter,y+offY,fg)
 				else:
-					sense.set_pixel(x+offX+offLetter,y+offY,bg)
+					Ui.drawPixel(x+offX+offLetter,y+offY,bg)
 

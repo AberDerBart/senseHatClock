@@ -20,7 +20,7 @@ class Player:
 			self.state=None
 
 		if self.state in self.stateImgs:
-			Ui.sense.set_pixels(self.stateImgs[self.state])
+			Ui.drawImage(self.stateImgs[self.state])
 	def down(self,event):
 		if(event.action=="pressed"):
 			Ui.setApp("playerAdv")

@@ -11,8 +11,8 @@ class Clock:
 		localTime=time.localtime()
 		hourString=str(localTime.tm_hour).rjust(2,'0')
 		minString=str(localTime.tm_min).rjust(2,'0')
-		braille.printB(Ui.sense,0,0,hourString)
-		braille.printB(Ui.sense,3,4,minString)
+		braille.printB(0,0,hourString)
+		braille.printB(3,4,minString)
 	def open(self):
 		Ui.sense.clear()
 		pass

@@ -4,6 +4,12 @@ appDict={}
 
 sense=SenseHat()
 
+def drawImage(image):
+	sense.set_pixels(image)
+
+def drawPixel(x,y,pixel):
+	sense.set_pixel(x,y,pixel)
+
 selection=None
 
 def registerApp(appString,app):

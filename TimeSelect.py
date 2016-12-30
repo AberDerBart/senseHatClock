@@ -17,7 +17,7 @@ class TimeSelect:
 		self.selection=0
 
 		if(self.img):
-			Ui.sense.set_pixels(self.img)
+			Ui.drawImage(self.img)
 		else:
 			Ui.sense.clear()
 
@@ -30,14 +30,14 @@ class TimeSelect:
 		minString=str(self.minute).rjust(2,'0')
 
 		if(blink):
-			braille.printB(Ui.sense,3,0,hourString)
-			braille.printB(Ui.sense,3,4,minString)
+			braille.printB(3,0,hourString)
+			braille.printB(3,4,minString)
 		elif(self.selection==0):
-			braille.printB(Ui.sense,3,0,"  ")
-			braille.printB(Ui.sense,3,4,minString)
+			braille.printB(3,0,"  ")
+			braille.printB(3,4,minString)
 		elif(self.selection==1):
-			braille.printB(Ui.sense,3,0,hourString)
-			braille.printB(Ui.sense,3,4,"  ")
+			braille.printB(3,0,hourString)
+			braille.printB(3,4,"  ")
 	def down(self,event):
 		if(event.action=="pressed"):
 			if(self.selection==0):

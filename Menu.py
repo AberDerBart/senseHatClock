@@ -14,7 +14,7 @@ class Menu:
 		self.middleAction=middleAction
 	def open(self):
 		if(self.img):
-			Ui.sense.set_pixels(self.img)
+			Ui.drawImage(self.img)
 		else:
 			Ui.sense.clear()
 	def close(self):

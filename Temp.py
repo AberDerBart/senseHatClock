@@ -23,8 +23,8 @@ class Temp:
 			tempColor=(0,0,255)
 
 		Ui.sense.clear()
-		braille.printB(Ui.sense,0,0,tempStr,fg=tempColor)
-		braille.printB(Ui.sense,0,4,humidStr)
+		braille.printB(0,0,tempStr,fg=tempColor)
+		braille.printB(0,4,humidStr)
 	def open(self):
 		pass
 	def close(self):
