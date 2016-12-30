@@ -4,9 +4,11 @@ import Ui
 import Clock
 import Temp
 import Player
-import Idle
+import Menu
 
 import time
+
+Ui.registerApp("idle",Menu.Menu(upAction="clock",downAction="player",leftAction="temp"))
 
 Ui.setApp("idle")
 run=True
