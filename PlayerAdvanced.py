@@ -29,9 +29,9 @@ def sleep(hour, minute):
 try:
 	Player.client.connect("localhost",6600)
 	if("scheduler" in Player.client.channels()):
-		Ui.registerApp("playerAdv",Menu.Menu("img/advanced.png",upAction="player",rightAction="playerSleep",leftAction="playerAlarm"))
-		Ui.registerApp("playerAlarm",TimeSelect.TimeSelect(alarm,imgPath="img/alarm.png",rightAction="playerAdv"))
-		Ui.registerApp("playerSleep",TimeSelect.TimeSelect(sleep,imgPath="img/sleep.png",leftAction="playerAdv"))
+		Ui.registerApp("playerAdv",Menu.Menu("img/playerAdvanced/menu.png",upAction="player",rightAction="playerSleep",leftAction="playerAlarm"))
+		Ui.registerApp("playerAlarm",TimeSelect.TimeSelect(alarm,imgPath="img/playerAdvanced/alarm.png",rightAction="playerAdv",leftAction="playerAdv"))
+		Ui.registerApp("playerSleep",TimeSelect.TimeSelect(sleep,imgPath="img/playerAdvanced/sleep.png",leftAction="playerAdv",rightAction="playerAdv"))
 		
 	else:
 		print("mpdScheduler not available")
