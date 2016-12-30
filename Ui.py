@@ -35,6 +35,7 @@ def up(event):
 
 # define update
 def update():
+	update.ticks=update.ticks+1
 	selection.update()
 	for event in sense.stick.get_events():
 		if(event.direction=="left"):
@@ -47,3 +48,8 @@ def update():
 			selection.down(event)
 		if(event.direction=="middle"):
 			selection.middle(event)
+		update.ticks=0
+
+	if(update.ticks > 30):
+		resetApp()
+update.ticks=0
