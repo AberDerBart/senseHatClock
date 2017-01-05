@@ -71,6 +71,6 @@ def update():
 			selection.middle(event)
 		update.ticks=0
 
-	if(update.ticks > 30):
+	if(update.ticks > 70):
 		resetApp()
 update.ticks=0
