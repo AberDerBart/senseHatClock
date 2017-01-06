@@ -26,6 +26,11 @@ def drawPixel(x,y,pixel):
 	global alpha
 	sense.set_pixel(x,y,pixelAlpha(pixel,alpha))
 
+def drawLoading():
+	drawImage(drawLoading.loading)
+
+drawLoading.loading=sense.load_image("img/loading.png")
+
 
 def registerApp(appString,app):
 	appDict[appString]=app

@@ -10,6 +10,7 @@ class Player:
 		self.stateImgs["stop"]=Ui.sense.load_image("img/player/stop.png")
 		self.state=None
 	def open(self):
+		Ui.drawLoading()
 		Player.client.connect("localhost",6600)
 	def close(self):
 		Player.client.disconnect()
