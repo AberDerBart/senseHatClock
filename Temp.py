@@ -22,11 +22,11 @@ class Temp:
 		if(negativeTemp):
 			tempColor=(0,0,255)
 
-		Ui.sense.clear()
 		braille.printB(0,0,tempStr,fg=tempColor)
 		braille.printB(0,4,humidStr)
 	def open(self):
-		pass
+		Ui.sense.clear()
+		self.update()
 	def close(self):
 		pass
 	def up(self,event):
