@@ -9,9 +9,11 @@ alpha=1
 
 
 def pixelAlpha(pixel,alpha):
+	"""multiplies the pixel values with [alpha] and return the pixel"""
 	return (int(pixel[0]*alpha),int(pixel[1]*alpha),int(pixel[2]*alpha))
 
 def imageAlpha(image,alpha):
+	"""takes an image (as pixel array) and multiplies all values with [alpha], returns the multiplied image"""
 	alphaImage=[]
 
 	for pixel in image:
@@ -20,47 +22,42 @@ def imageAlpha(image,alpha):
 	return alphaImage
 
 def drawImage(image):
+	"""draws [image] on the sense hat"""
 	sense.set_pixels(imageAlpha(image,alpha))
 
 def drawPixel(x,y,pixel):
+	"""sets the pixel color of pixel at ([x],[y]) on the sense hat to [pixel]"""
 	global alpha
 	sense.set_pixel(x,y,pixelAlpha(pixel,alpha))
 
 def drawLoading():
+	"""draws a loading icon on the sense hat"""
 	drawImage(drawLoading.loading)
 
 drawLoading.loading=sense.load_image("img/loading.png")
 
 
 def registerApp(appString,app):
+	"""registers [app] in [appDict], it can then be loaded with [setApp]"""
 	appDict[appString]=app
 
-def setApp(app):
+def setApp(appString):
+	"""loads app with the corresponding string [appString]"""
 	global appDict
 	global selection
-	if app in appDict.keys():
+	if appString in appDict.keys():
 		if selection:
 			selection.close()
-		selection=appDict[app]
+		selection=appDict[appString]
 		selection.open()
 
 def resetApp():
+	"""returns to the idle app"""
 	setApp("idle")
-
-# define keybindings
-def down(event):
-	selection.down(event)
-def left(event):
-	selection.left(event)
-def right(event):
-	selection.right(event)
-def middle(event):
-	selection.middle(event)
-def up(event):
-	selection.up(event)
 
 # define update
 def update():
+	"""main loop iteration - executes the update method in the current app and processes keypresses"""
 	update.ticks=update.ticks+1
 	selection.update()
 	for event in sense.stick.get_events():
