@@ -8,7 +8,7 @@ import TimeSelect
 def alarm(hour,minute):
 	"""set an alarm timer for [hour]:[minute]"""
 
-	Player.client.connect("localhost",6600)
+	Player.client.connect(Player.host,Player.port)
 	Player.client.sendmessage("scheduler","alarm "+str(hour)+":"+str(minute))
 	Player.client.disconnect()
 
@@ -18,7 +18,7 @@ def alarm(hour,minute):
 def sleep(hour, minute):
 	"""set a sleep timer for [hour]:[minute]"""
 
-	Player.client.connect("localhost",6600)
+	Player.client.connect(Player.host,Player.port)
 	Player.client.sendmessage("scheduler","sleep "+str(hour)+":"+str(minute))
 	Player.client.disconnect()
 
@@ -27,7 +27,7 @@ def sleep(hour, minute):
 
 
 try:
-	Player.client.connect("localhost",6600)
+	Player.client.connect(Player.host,Player.port)
 	if("scheduler" in Player.client.channels()):
 		Ui.registerApp("playerAdv",Menu.Menu("img/playerAdvanced/menu.png",upAction="player",rightAction="playerSleep",leftAction="playerAlarm"))
 		Ui.registerApp("playerAlarm",TimeSelect.TimeSelect(alarm,imgPath="img/playerAdvanced/alarm.png",rightAction="playerAdv",leftAction="playerAdv"))

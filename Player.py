@@ -1,5 +1,6 @@
 import mpd
 import Ui
+import configparser
 
 class Player:
 	client=mpd.MPDClient()
@@ -11,7 +12,7 @@ class Player:
 		self.state=None
 	def open(self):
 		Ui.drawLoading()
-		Player.client.connect("localhost",6600)
+		Player.client.connect(Player.host,Player.port)
 	def close(self):
 		Player.client.disconnect()
 	def update(self):
@@ -44,9 +45,16 @@ class Player:
 	def up(self,event):
 		if(event.action=="pressed"):
 			Ui.setApp("idle")
-5
+
+
+
 try:
-	Player.client.connect("localhost",6600)
+	config=configparser.ConfigParser()
+	config.read("senseHatClock.ini")
+	Player.host=config.get("player","host")
+	Player.port=config.getint("player","port")
+
+	Player.client.connect(Player.host,Player.port)
 	Player.client.disconnect()
 	Ui.registerApp("player",Player())
 except ConnectionRefusedError:
