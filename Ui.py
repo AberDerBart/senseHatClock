@@ -1,4 +1,5 @@
 from sense_emu import SenseHat
+import configparser
 
 appDict={}
 
@@ -6,6 +7,10 @@ sense=SenseHat()
 
 selection=None
 alpha=1
+
+config=configparser.ConfigParser()
+config.read("senseHatClock.ini")
+alpha=config.getfloat("General","alpha")
 
 
 def pixelAlpha(pixel,alpha):
