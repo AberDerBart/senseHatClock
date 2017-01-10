@@ -1,0 +1,12 @@
+[Unit]
+Description=sense hat clock
+Requires=network.target local-fs.target
+
+[Service]
+ExecStart=/usr/bin/python3 /home/pi/senseHatClock/main.python
+WorkingDirectory=/home/pi/senseHatClock/
+Type=simple
+
+[Install]
+WantedBy=multi-user.target
+~                                                                                                                             
