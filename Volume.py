@@ -17,7 +17,11 @@ class PlayerVolume:
 		Ui.drawImage(self.image)
 		if("volume" in Player.client.status()):
 			self.volume=int(Player.client.status()["volume"])
-			
+		for x in range(0,8):
+			if(self.volume >= 12.5*x):
+				Ui.drawPixel(x,7,(255,255,255))
+			else:
+				Ui.drawPixel(x,7,(0,0,0))
 	def down(self,event):
 		pass
 	def left(self,event):
