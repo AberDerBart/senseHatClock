@@ -4,6 +4,7 @@ import Ui
 from Player import Player
 import Menu
 import TimeSelect
+import Volume
 
 def alarm(hour,minute):
 	"""set an alarm timer for [hour]:[minute]"""
@@ -31,7 +32,7 @@ def sleep(hour, minute):
 try:
 	Player.client.connect(Player.host,Player.port)
 	if("scheduler" in Player.client.channels()):
-		Ui.registerApp("playerAdv",Menu.Menu("img/playerAdvanced/menu.png",upAction="player",rightAction="playerSleep",leftAction="playerAlarm"))
+		Ui.registerApp("playerAdv",Menu.Menu("img/playerAdvanced/menu.png",upAction="player",rightAction="playerSleep",leftAction="playerAlarm",downAction="volume"))
 		Ui.registerApp("playerAlarm",TimeSelect.TimeSelect(alarm,imgPath="img/playerAdvanced/alarm.png",rightAction="playerAdv",leftAction="playerAdv"))
 		Ui.registerApp("playerSleep",TimeSelect.TimeSelect(sleep,imgPath="img/playerAdvanced/sleep.png",leftAction="playerAdv",rightAction="playerAdv"))
 		
