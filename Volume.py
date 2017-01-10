@@ -2,6 +2,7 @@ import mpd
 import Ui
 from Player import Player
 import Menu
+import braille
 
 class PlayerVolume:
 	def __init__(self):
@@ -17,11 +18,7 @@ class PlayerVolume:
 	def update(self):
 		if("volume" in Player.client.status()):
 			self.volume=int(Player.client.status()["volume"])
-		for x in range(0,8):
-			if(self.volume >= 12.5*x):
-				Ui.drawPixel(x,7,(255,255,255))
-			else:
-				Ui.drawPixel(x,7,(0,0,0))
+			braille.printB(0,5,str(self.volume).rjust(3))
 	def down(self,event):
 		pass
 	def left(self,event):
