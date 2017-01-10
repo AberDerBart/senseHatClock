@@ -9,12 +9,12 @@ class PlayerVolume:
 	def open(self):
 		Ui.drawLoading()
 		Player.client.connect(Player.host,Player.port)
-		self.update()
 		self.volume=None
+		Ui.drawImage(self.image)
+		self.update()
 	def close(self):
 		Player.client.disconnect()
 	def update(self):
-		Ui.drawImage(self.image)
 		if("volume" in Player.client.status()):
 			self.volume=int(Player.client.status()["volume"])
 		for x in range(0,8):
