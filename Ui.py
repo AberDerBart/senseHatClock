@@ -46,6 +46,10 @@ def registerApp(appString,app):
 	"""registers [app] in [appDict], it can then be loaded with [setApp]"""
 	appDict[appString]=app
 
+def getApp(appString):
+	"""returns the app registered with [appString]"""
+	return appDict[appString]
+
 def setApp(appString):
 	"""loads app with the corresponding string [appString]"""
 	global appDict

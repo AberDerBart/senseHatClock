@@ -38,6 +38,7 @@ try:
 		
 	else:
 		print("mpdScheduler not available")
+		Ui.registerApp("playerAdv",Ui.getApp("volume"))
 
 	Player.client.disconnect()
 except ConnectionRefusedError:
